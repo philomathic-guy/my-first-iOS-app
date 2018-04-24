@@ -45,7 +45,9 @@
     // 3 - Get the quote string for the index
 //    NSString *my_quote = self.myQuotes[index];
     NSString *my_quote = self.movieQuotes[index][@"quote"];
-    // 4 - Display the quote in the text view
-    self.quoteText.text = [NSString stringWithFormat:@"Quote:\n\n%@",  my_quote];
+    // 4 - Get the source information for the same index
+    NSString *quote_sourse = self.movieQuotes[index][@"source"];
+    // 5 - Display the quote in the text view
+    self.quoteText.text = [NSString stringWithFormat:@"Quote:\n\n%@\n\n\t- %@",  my_quote, quote_sourse];
 }
 @end
