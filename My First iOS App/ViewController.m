@@ -27,6 +27,8 @@
                      @"The early bird catches the worm",
                      @"As slow as a wet week"
     ];
+    NSString *plistCatPath = [[NSBundle mainBundle] pathForResource:@"quotes" ofType:@"plist"];
+    self.movieQuotes = [NSMutableArray arrayWithContentsOfFile:plistCatPath];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -36,11 +38,13 @@
 
 - (IBAction)quoteButtonTapped:(id)sender {
     // 1 - Get number of rows in array
-    int array_tot = [self.myQuotes count];
+//    int array_tot = [self.myQuotes count];
+    int array_tot = [self.movieQuotes count];
     // 2 - Get random index
     int index = (arc4random() % array_tot);
     // 3 - Get the quote string for the index
-    NSString *my_quote = self.myQuotes[index];
+//    NSString *my_quote = self.myQuotes[index];
+    NSString *my_quote = self.movieQuotes[index][@"quote"];
     // 4 - Display the quote in the text view
     self.quoteText.text = [NSString stringWithFormat:@"Quote:\n\n%@",  my_quote];
 }
