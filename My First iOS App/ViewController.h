@@ -14,6 +14,7 @@
 @property (nonatomic, strong) NSMutableArray *movieQuotes;
 // The thing that follows IBOutlet is the interface element on the XIB file that the object can be linked to
 @property (nonatomic, strong) IBOutlet UITextView *quoteText;
+@property (nonatomic, strong) IBOutlet UISegmentedControl *quoteOpt;
 
 - (IBAction)quoteButtonTapped:(id)sender;
 

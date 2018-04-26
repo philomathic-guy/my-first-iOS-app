@@ -34,11 +34,21 @@
                                     <action selector="quoteButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CsA-In-YCA"/>
                                 </connections>
                             </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="pNW-Sn-75Z">
+                                <rect key="frame" x="97" y="319" width="181" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="Modern"/>
+                                    <segment title="Mine"/>
+                                </segments>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="quoteOpt" destination="pNW-Sn-75Z" id="t3L-4u-ua0"/>
                         <outlet property="quoteText" destination="RQd-hw-aC7" id="6X1-Nu-XOL"/>
                     </connections>
                 </viewController>
