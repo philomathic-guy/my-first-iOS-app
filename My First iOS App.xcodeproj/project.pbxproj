@@ -15,6 +15,7 @@
 		A91E1D4A2083D709003FA583 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A91E1D492083D709003FA583 /* main.m */; };
 		A91E1D542083D709003FA583 /* My_First_iOS_AppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A91E1D532083D709003FA583 /* My_First_iOS_AppTests.m */; };
 		A91E1D5F2083D709003FA583 /* My_First_iOS_AppUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = A91E1D5E2083D709003FA583 /* My_First_iOS_AppUITests.m */; };
+		A958DE1D208F796800291350 /* quotes.plist in Resources */ = {isa = PBXBuildFile; fileRef = A958DE1C208F796800291350 /* quotes.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		A91E1D5A2083D709003FA583 /* My First iOS AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "My First iOS AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A91E1D5E2083D709003FA583 /* My_First_iOS_AppUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = My_First_iOS_AppUITests.m; sourceTree = "<group>"; };
 		A91E1D602083D709003FA583 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A958DE1C208F796800291350 /* quotes.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = quotes.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 				A91E1D452083D709003FA583 /* LaunchScreen.storyboard */,
 				A91E1D482083D709003FA583 /* Info.plist */,
 				A91E1D492083D709003FA583 /* main.m */,
+				A958DE1C208F796800291350 /* quotes.plist */,
 			);
 			path = "My First iOS App";
 			sourceTree = "<group>";
@@ -238,6 +241,7 @@
 				A91E1D472083D709003FA583 /* LaunchScreen.storyboard in Resources */,
 				A91E1D442083D709003FA583 /* Assets.xcassets in Resources */,
 				A91E1D422083D707003FA583 /* Main.storyboard in Resources */,
+				A958DE1D208F796800291350 /* quotes.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

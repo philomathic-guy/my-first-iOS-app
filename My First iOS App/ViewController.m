@@ -27,6 +27,8 @@
                      @"The early bird catches the worm",
                      @"As slow as a wet week"
     ];
+    NSString *plistCatPath = [[NSBundle mainBundle] pathForResource:@"quotes" ofType:@"plist"];
+    self.movieQuotes = [NSMutableArray arrayWithContentsOfFile:plistCatPath];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -35,13 +37,78 @@
 }
 
 - (IBAction)quoteButtonTapped:(id)sender {
-    // 1 - Get number of rows in array
-    int array_tot = [self.myQuotes count];
-    // 2 - Get random index
-    int index = (arc4random() % array_tot);
-    // 3 - Get the quote string for the index
-    NSString *my_quote = self.myQuotes[index];
-    // 4 - Display the quote in the text view
-    self.quoteText.text = [NSString stringWithFormat:@"Quote:\n\n%@",  my_quote];
+    if(self.quoteOpt.selectedSegmentIndex == 2){
+        // 1 - Get number of rows in array
+        //    int array_tot = [self.movieQuotes count];
+        int array_tot = [self.myQuotes count];
+        // works as well
+        // NSUInteger array_tot = [self.myQuotes count];
+        
+        // 2 - Get random index
+        int index = (arc4random() % array_tot);
+        
+        // 3 - Get the quote string for the index
+        NSString *my_quote = self.myQuotes[index];
+        //    NSString *my_quote = self.movieQuotes[index][@"quote"];
+        
+        // 4 - Get the source information for the same index
+        //    NSString *quote_sourse = self.movieQuotes[index][@"source"];
+        
+        // 5 - Display the quote in the text view
+        // NOTE: .text is added to refer to the text in the quoteText field
+        self.quoteText.text = [NSString stringWithFormat:@"My Quote-\n%@",  my_quote];
+        //    self.quoteText.text = [NSString stringWithFormat:@"Quote:\n\n%@\n\n\t- %@",  my_quote, quote_sourse];
+    }
+    // To display movie Quotes
+    else{
+        // Initially, keep category as classic
+        NSString *category = @"classic";
+        // If option 2 is selected, then change the category to modern
+        if (self.quoteOpt.selectedSegmentIndex == 1) {
+            category = @"modern";
+        }
+        // Formed the predicate
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"category == %@", category];
+        // Applied the predicate on the movieQuotes array
+        NSArray *filteredArray = [self.movieQuotes filteredArrayUsingPredicate:predicate];
+        // Got the length of this newly formed array
+        int array_len = [filteredArray count];
+        // If there is at least 1 quote to be displayed
+        if (array_len > 0) {
+            // Generate a random index
+            int index = (arc4random() % array_len);
+            
+            NSString *quote = filteredArray[index][@"quote"];
+            
+            // NSString *source = filteredArray[index][@"source"];
+            // Alternate way to get source
+            NSString *source = [[filteredArray objectAtIndex:index] valueForKey:@"source"];
+//            // If the selected quote has a source, display it
+//            if ([source length] != 0) {
+//                self.quoteText.text = [NSString stringWithFormat:@"Quote -\n%@\n\t- %@",quote, source];
+//            }
+//            // Else just display the quote
+//            else{
+//                self.quoteText.text = [NSString stringWithFormat:@"Quote -\n%@",quote];
+//            }
+            if ([category isEqualToString:@"classic"]) {
+                if ([source length] != 0)
+                    quote = [NSString stringWithFormat:@"Quote from Classic Movie-\n%@\n\t-%@", quote, source];
+                else
+                    quote = [NSString stringWithFormat:@"Quote from Classic Movie-\n%@", quote];
+            }
+            else{
+                if ([source length] != 0)
+                    quote = [NSString stringWithFormat:@"Quote from Modern Movie-\n%@\n\t-%@", quote, source];
+                else
+                    quote = [NSString stringWithFormat:@"Quote from Modern Movie-\n%@", quote];
+            }
+            self.quoteText.text = quote;
+        }
+        // Else display that there are no quotes to view
+        else{
+            self.quoteText.text = @"Sorry! No quotes to display";
+        }
+    }
 }
 @end
