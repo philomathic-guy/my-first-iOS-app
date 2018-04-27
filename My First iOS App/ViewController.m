@@ -39,18 +39,24 @@
 - (IBAction)quoteButtonTapped:(id)sender {
     if(self.quoteOpt.selectedSegmentIndex == 2){
         // 1 - Get number of rows in array
-        int array_tot = [self.myQuotes count];
         //    int array_tot = [self.movieQuotes count];
+        int array_tot = [self.myQuotes count];
+        // works as well
+        // NSUInteger array_tot = [self.myQuotes count];
+        
         // 2 - Get random index
         int index = (arc4random() % array_tot);
+        
         // 3 - Get the quote string for the index
         NSString *my_quote = self.myQuotes[index];
         //    NSString *my_quote = self.movieQuotes[index][@"quote"];
+        
         // 4 - Get the source information for the same index
         //    NSString *quote_sourse = self.movieQuotes[index][@"source"];
+        
         // 5 - Display the quote in the text view
         // NOTE: .text is added to refer to the text in the quoteText field
-        self.quoteText.text = [NSString stringWithFormat:@"Quote:\n\n%@",  my_quote];
+        self.quoteText.text = [NSString stringWithFormat:@"Quote:\n%@",  my_quote];
         //    self.quoteText.text = [NSString stringWithFormat:@"Quote:\n\n%@\n\n\t- %@",  my_quote, quote_sourse];
     }
     // To display movie Quotes
@@ -72,8 +78,17 @@
             // Generate a random index
             int index = (arc4random() % array_len);
             NSString *quote = filteredArray[index][@"quote"];
-            NSString *source = filteredArray[index][@"source"];
-            self.quoteText.text = [NSString stringWithFormat:@"Quote -\n\n%@\n- %@",quote, source];
+            // NSString *source = filteredArray[index][@"source"];
+            // Alternate way to get source
+            NSString *source = [[filteredArray objectAtIndex:index] valueForKey:@"source"];
+            // If the selected quote has a source, display it
+            if ([source length] != 0) {
+                self.quoteText.text = [NSString stringWithFormat:@"Quote -\n%@\n\t- %@",quote, source];
+            }
+            // Else just display the quote
+            else{
+                self.quoteText.text = [NSString stringWithFormat:@"Quote -\n%@",quote];
+            }
         }
         // Else display that there are no quotes to view
         else{
