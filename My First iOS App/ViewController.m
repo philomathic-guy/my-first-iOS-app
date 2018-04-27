@@ -49,8 +49,36 @@
         // 4 - Get the source information for the same index
         //    NSString *quote_sourse = self.movieQuotes[index][@"source"];
         // 5 - Display the quote in the text view
+        // NOTE: .text is added to refer to the text in the quoteText field
         self.quoteText.text = [NSString stringWithFormat:@"Quote:\n\n%@",  my_quote];
         //    self.quoteText.text = [NSString stringWithFormat:@"Quote:\n\n%@\n\n\t- %@",  my_quote, quote_sourse];
+    }
+    // To display movie Quotes
+    else{
+        // Initially, keep category as classic
+        NSString *category = @"classic";
+        // If option 2 is selected, then change the category to modern
+        if (self.quoteOpt.selectedSegmentIndex == 1) {
+            category = @"modern";
+        }
+        // Formed the predicate
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"category == %@", category];
+        // Applied the predicate on the movieQuotes array
+        NSArray *filteredArray = [self.movieQuotes filteredArrayUsingPredicate:predicate];
+        // Got the length of this newly formed array
+        int array_len = [filteredArray count];
+        // If there is at least 1 quote to be displayed
+        if (array_len > 0) {
+            // Generate a random index
+            int index = (arc4random() % array_len);
+            NSString *quote = filteredArray[index][@"quote"];
+            NSString *source = filteredArray[index][@"source"];
+            self.quoteText.text = [NSString stringWithFormat:@"Quote -\n\n%@\n- %@",quote, source];
+        }
+        // Else display that there are no quotes to view
+        else{
+            self.quoteText.text = @"Sorry! No quotes to display";
+        }
     }
 }
 @end
