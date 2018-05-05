@@ -1,5 +1,5 @@
 
-## Objective C conventions I learned about -
+## Objective C conventions (Apple developers) -
 * **Class and method names** are much more descriptive than you might find with general C code functions or the C Standard Library, and **camel case is used for names with multiple words**
 * Many Objective-C and framework features require you to follow **strict naming conventions** in order for various mechanisms to work correctly. Accessor method names, for example, must follow the conventions in order **to work with techniques such as Key-Value Coding (KVC) or Key-Value Observing (KVO).**
 * **Objective-C classes must be named uniquely** not only within the code that you’re writing in a project, but also across any frameworks or bundles you might be including. As an example, you should avoid using generic class names like *ViewController* or *TextParser* because it’s possible a framework you include in your app may fail to follow conventions and create classes with the same names.
@@ -16,3 +16,5 @@
 * If you need to provide your own accessor method implementations for any reason, it’s important to make sure that you use the right method names for a property in order for your methods to be called through dot syntax, for example.
 	* Unless specified otherwise, a **getter method** should use the **same name as the property**. For a property called firstName, the accessor method should also be called firstName. The **exception** to this rule is **for Boolean properties**, for which the **getter method should start with is**. For a property called paused, for example, the getter method should be called isPaused.
 	* The **setter method** for a property should use the form **setPropertyName:**
+* Class factory methods should always start with the name of the class (without the prefix) that they create, with the exception of subclasses of classes with existing factory methods. E.g. NSArray *arr = [NSArray array] but NSMutableArray *arr = [NSMutableArray array]
+*  The compiler judges which rule it should follow based on the name of the creation method. Objects created via factory methods are managed slightly differently from objects that are created through traditional allocation and initialization or new because of the use of autorelease pool blocks.
