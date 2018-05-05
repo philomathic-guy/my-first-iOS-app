@@ -40,7 +40,7 @@
     if(self.quoteOpt.selectedSegmentIndex == 2){
         // 1 - Get number of rows in array
         //    int array_tot = [self.movieQuotes count];
-        int array_tot = [self.myQuotes count];
+        NSUInteger array_tot = [self.myQuotes count];
         // works as well
         // NSUInteger array_tot = [self.myQuotes count];
         
@@ -72,7 +72,7 @@
         // Applied the predicate on the movieQuotes array
         NSArray *filteredArray = [self.movieQuotes filteredArrayUsingPredicate:predicate];
         // Got the length of this newly formed array
-        int array_len = [filteredArray count];
+        NSUInteger array_len = [filteredArray count];
         // If there is at least 1 quote to be displayed
         if (array_len > 0) {
             // Generate a random index
