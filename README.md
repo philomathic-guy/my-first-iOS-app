@@ -12,3 +12,7 @@
 	* If a method includes an **error pointer parameter** to be set if an error occurred, this should be the **last parameter** to the method. 
 	* If a method takes a block, the **block parameter** should be the last parameter in order to make any method invocations as readable as possible when specifying a block inline. For the same reason, it’s **best to avoid methods that take multiple block arguments**, wherever possible.
 * A **local variable name** must not clash with any other variables declared within the **same scope**
+* When you use the **@property syntax** to declare properties on an object, the compiler automatically **synthesizes the relevant getter and setter methods** (unless you indicate otherwise). 
+* If you need to provide your own accessor method implementations for any reason, it’s important to make sure that you use the right method names for a property in order for your methods to be called through dot syntax, for example.
+	* Unless specified otherwise, a **getter method** should use the **same name as the property**. For a property called firstName, the accessor method should also be called firstName. The **exception** to this rule is **for Boolean properties**, for which the **getter method should start with is**. For a property called paused, for example, the getter method should be called isPaused.
+	* The **setter method** for a property should use the form **setPropertyName:**
